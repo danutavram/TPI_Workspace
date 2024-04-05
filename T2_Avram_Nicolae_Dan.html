@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Numerele Armstrong</title>
+</head>
+<body>
+<h2>Introduceti intervalul:</h2>
+<form id="intervalForm">
+  <label for="start">Inceput:</label>
+  <input type="number" id="start" name="start" required><br><br>
+  <label for="end">Sfarsit:</label>
+  <input type="number" id="end" name="end" required><br><br>
+  <button type="submit">Afiseaza numerele Armstrong</button>
+</form>
+<div id="result"></div>
+
+<script>
+document.getElementById('intervalForm').addEventListener('submit', function(event) {
+  event.preventDefault();
+  const start = parseInt(document.getElementById('start').value);
+  const end = parseInt(document.getElementById('end').value);
+  const armstrongNumbers = [];
+
+  for (let i = Math.max(10, start); i <= end; i++) {
+    let sum = 0;
+    let num = i;
+    const numDigits = Math.floor(Math.log10(num)) + 1;
+
+    while (num > 0) {
+      const digit = num % 10;
+      sum += digit ** numDigits;
+      num = Math.floor(num / 10);
+    }
+
+    if (sum === i) {
+      armstrongNumbers.push(i);
+    }
+  }
+
+  const resultDiv = document.getElementById('result');
+  resultDiv.innerHTML = armstrongNumbers.length > 0 ? 'Numerele Armstrong din interval sunt: ' + armstrongNumbers.join(', ') : 'Nu exista numere Armstrong in acest interval mentionat.';
+});
+</script>
+</body>
+</html>
+
+

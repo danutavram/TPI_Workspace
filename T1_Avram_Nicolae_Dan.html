@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Calculator</title>
+</head>
+<body>
+    <h2>Calculator</h2>
+
+    <input type="number" id="num1" placeholder="Primul numar">
+    <input type="number" id="num2" placeholder="Al doilea numar">
+
+    <button onClick="calculare('inmultire')">Inmultire</button>
+    <button onClick="calculare('impartire')">Impartire</button>
+
+    <div id="rezultat"></div>
+
+    <script>
+        function calculare(operatie) {
+            var num1 = parseFloat(document.getElementById('num1').value);
+            var num2 = parseFloat(document.getElementById('num2').value);
+
+            var rezultat = (operatie === 'inmultire') ? num1 * num2 : num1 / num2;
+
+            document.getElementById('rezultat').innerHTML = 'Rezultat: ' + rezultat;
+        }
+    </script>
+</body>
+</html>
